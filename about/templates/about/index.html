@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>about</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+</head>
+<body>
+ <img style="width:100%" src="{% static "img/banner_about.png" %}" alt="">
+
+<nav>
+    <ul>
+        {% for link,name in nav %}
+             <li>
+             <a href="{{link}}" title="">{{ name }}</a>
+             </li>
+        {% endfor %}
+
+    </ul>
+</nav>
+<h1>
+    {{ title_bar }}
+</h1>
+<h2>
+    {{ title_page}}
+</h2>
+<footer>
+    <h4>Contributed By : {{ kontributor }}</h4>
+</footer>
+</body>
+</html>

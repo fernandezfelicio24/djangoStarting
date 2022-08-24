@@ -1,0 +1,52 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+</head>
+<body>
+{% comment %}<img src="{ % static "img/banner_home.png"%}" alt="">{% endcomment %}
+ {% comment %}<img style="width:100%" src="{% static "img/banner_home.png" %}" alt="">{% endcomment %}
+<img  id="banner" src="{% static banner %}">
+
+
+<nav>
+    <ul>
+        {% for link,name in nav %}
+             <li>
+             <a href="{{link}}" title="">{{ name }}</a>
+             </li>
+        {% endfor %}
+
+    </ul>
+</nav>
+<h1>
+    {{ title_bar }}
+</h1>
+<h2>
+    {{ title_page}}
+</h2>
+<ul>
+    {% comment %}<li>
+        <a href="/about" title="">About</a>
+
+    </li>
+    <li>
+        <a href="/blog" title="">Blog</a>
+    </li>{% endcomment %}
+    {% comment %}<li>
+        <a href="/blog/recent" title="">Recent Blog</a>
+    </li>{% endcomment %}
+</ul>
+
+
+<footer>
+    <h4>Contributed By : {{ kontributor }}</h4>
+</footer>
+</body>
+</html>
