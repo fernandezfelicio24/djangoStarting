@@ -7,6 +7,7 @@ def index(request):
         'title_bar': 'About Telemor',
         'title_page': ' About Telemor Hetan diak Liu',
         'kontributor': 'Diego Fernandes',
+        'app_css': 'about/css/styles.css',
         'nav': [
             ['/', 'Home'],
             ['/blog', 'Blog'],

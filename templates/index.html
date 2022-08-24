@@ -7,15 +7,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/bootstrap.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
 </head>
 <body>
 {% comment %}<img src="{ % static "img/banner_home.png"%}" alt="">{% endcomment %}
  {% comment %}<img style="width:100%" src="{% static "img/banner_home.png" %}" alt="">{% endcomment %}
-<img  id="banner" src="{% static banner %}">
+{% comment %}<img  id="banner" src="{% static banner %}">{% endcomment %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+        <img style="height: 30px" id="banner" src="{% static "img/logo.png" %}">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+      <ul class="navbar-nav ms-lg-auto">
+          {% for link,name in nav %}
+              <li class="nav-item">
+             <a class="nav-link " aria-current="page" href="{{link}}">{{ name }}</a>
+            </li>
+         {% endfor %}
 
 
-<nav>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+{% comment %}<nav>
     <ul>
         {% for link,name in nav %}
              <li>
@@ -24,29 +47,48 @@
         {% endfor %}
 
     </ul>
-</nav>
-<h1>
-    {{ title_bar }}
-</h1>
-<h2>
-    {{ title_page}}
-</h2>
-<ul>
-    {% comment %}<li>
-        <a href="/about" title="">About</a>
+</nav>{% endcomment %}
+<div class="container-fluid">
 
-    </li>
-    <li>
-        <a href="/blog" title="">Blog</a>
-    </li>{% endcomment %}
-    {% comment %}<li>
-        <a href="/blog/recent" title="">Recent Blog</a>
-    </li>{% endcomment %}
-</ul>
+        <h2>
+            {{ title_page}}
+        </h2>
+        <ul>
+            {% comment %}<li>
+                <a href="/about" title="">About</a>
+
+            </li>
+            <li>
+                <a href="/blog" title="">Blog</a>
+            </li>{% endcomment %}
+            {% comment %}<li>
+                <a href="/blog/recent" title="">Recent Blog</a>
+            </li>{% endcomment %}
+        </ul>
+        <p>
+            The standard Lorem Ipsum passage, used since the 1500s
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        </p>
 
 
-<footer>
+</div>
+
+<div class="container-fluid">
+  <footer>
     <h4>Contributed By : {{ kontributor }}</h4>
 </footer>
+</div>
+
+
+
+
+<script src="{% static "vendor/jquery/jquery.js" %}" type="text/javascript"> </script>
+<script src="{% static "vendor/popper/popper.js" %}" type="text/javascript"></script>
+<script src="{% static "vendor/bootstrap/bootstrap.js" %}" type="text/javascript" ></script>
 </body>
 </html>
