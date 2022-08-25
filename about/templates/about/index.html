@@ -1,34 +1,17 @@
-{% load static %}
+{% extends "snippets/base.html"  %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>about</title>
-    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
- <link rel="stylesheet" type="text/css" href="{% static app_css %}">
-</head>
-<body>
- <img style="width:100%" src="{% static "about/img/banner_about.png" %}" alt="">
+{% block bar %}
+<h2>{{ title_bar}}</h2>
+{% endblock %}
 
-<nav>
-    <ul>
-        {% for link,name in nav %}
-             <li>
-             <a href="{{link}}" title="">{{ name }}</a>
-             </li>
-        {% endfor %}
+{% block header %}
+<h1>{{ title_page}}</h1>
+{% endblock %}
 
-    </ul>
-</nav>
-<h1>
-    {{ title_bar }}
-</h1>
-<h2>
-    {{ title_page}}
-</h2>
-<footer>
-    <h4>Contributed By : {{ kontributor }}</h4>
-</footer>
-</body>
-</html>
+{% block content %}
+<p>Welcome To the About Page Brozzz and Sizzz</p>
+{% endblock %}
+
+{% block content1 %}
+<p>Content</p>
+{% endblock %}

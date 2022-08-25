@@ -6,12 +6,11 @@ def index(request):
     context = {
         'title_bar': 'Telemor Blog',
         'title_page': 'Telemor nia Blog diaria',
-        'kontributor': 'vtl_it_felicio',
+        'kontributor': 'vtl_it_reinaldo',
         'app_css':'blog/css/styles.css',
         'nav': [
             ['/', 'Home'],
             ['/about', 'About'],
-            ['/contact', 'Contact'],
             ['/blog/story', 'Story'],
             ['/blog/news', 'News'],
         ]
@@ -24,7 +23,7 @@ def story(request):
     context = {
         'title_bar': 'Telemor Story',
         'title_page': 'Telemor Story Around',
-        'kontributor': 'vtl_it_ajito'
+        'kontributor': 'vtl_it_diego'
     }
     return render(request,  'blog/index.html', context)
     #return HttpResponse('<h1>Ini adalah recent post</h1>')
@@ -33,7 +32,7 @@ def news(request):
     context = {
         'title_bar': 'Telemor News',
         'title_page': 'Telemor News everywhere',
-        'kontributor': 'vtl_it_ricardo'
+        'kontributor': 'vtl_it_adasi'
     }
     return render(request, 'blog/index.html', context)
     #return HttpResponse('<h1>Ini adalah recent post</h1>')

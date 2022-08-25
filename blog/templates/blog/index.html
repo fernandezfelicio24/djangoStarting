@@ -1,38 +1,31 @@
+{% extends "snippets/base.html"  %}
 {% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
-    <link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
- <link rel="stylesheet" type="text/css" href="{% static app_css %}">
-</head>
-<body>
-<img style="width:100%" src="{% static "blog/img/banner_blog.png" %}" alt="">
 
-<nav>
-    <ul>
-        {% for link,name in nav %}
-             <li>
-             <a href="{{link}}" title="">{{ name }}</a>
-             </li>
-        {% endfor %}
+{% block app_css %}
+<link rel="stylesheet" type="text/css" href="{% static "blog/css/styles.css" %}">
+{% endblock %}
 
-    </ul>
-</nav>
+{% block image %}
+<div class="masthead"
+      style="background-image: url('../../static/blog/img/banner_blog.png');">
+          <div class="color-overlay d-flex flex-column justify-content-center align-items-center">
+              <h1>Learning Django</h1>
+        </div>
+</div>
+{% endblock %}
 
-<h1>
-    {{ title_bar }}
-</h1>
-<h2>
-    {{ title_page}}
-</h2>
+{% block bar %}
+<h2>{{ title_bar}}</h2>
+{% endblock %}
 
-<footer>
-    <h4>Contributed By : {{ kontributor }}</h4>
-</footer>
-</body>
-</html>
+{% block header %}
+<h1>{{ title_page}}</h1>
+{% endblock %}
+
+{% block content %}
+<p>Welcome To the Blog Page Brozzz and Sizzz</p>
+{% endblock %}
+
+{% block content1 %}
+<p>Content</p>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    {% include "snippets/styles.html"%}
+
+    {% block app_css %}
+<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+    {% endblock %}
+
+</head>
+<body>
+
+    {% comment %}<img src="{ % static "img/banner_home.png"%}" alt="">{% endcomment %}
+         {% comment %}<img style="width:100%" src="{% static "img/banner_home.png" %}" alt="">{% endcomment %}
+        {% comment %}<img  id="banner" src="{% static banner %}">{% endcomment %}
+    {% include "snippets/navbar.html"%}
+
+    {% block image %}
+
+    {% endblock %}
+    {% comment %}div class="masthead"
+      style="background-image: url('../../static/img/background-image.jpg');">
+          <div class="color-overlay d-flex flex-column justify-content-center align-items-center">
+              <h1>Learning Django</h1>
+        </div>
+    </div>{% endcomment %}
+    <div  class="container mt-3" id="kotak">
+          {% block bar %}
+
+          {% endblock %}
+
+          <div class="mt-4 p-5 bg-primary text-white rounded">
+              {% block header %}
+
+              {% endblock %}
+
+              {% block content %}
+
+              {% endblock %}
+
+          </div>
+
+
+    </div>
+
+     <div  class="container mt-3" >
+         <div class="mt-4 p-5 bg-primary text-white rounded">
+
+
+              {% block content1 %}
+
+              {% endblock %}
+
+            </div>
+     </div>
+
+    <div class="h-100 d-flex align-items-center justify-content-center mt-lg-3">
+          <div style="background:darkslategrey">
+            <footer>
+                <h4>Contributed By : {{ kontributor }}</h4>
+            </footer>
+          </div>
+    </div>
+
+    {% include "snippets/scripts.html"%}
+
+</body>
+</html>

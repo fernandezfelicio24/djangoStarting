@@ -11,7 +11,6 @@ def index(request):
         'nav': [
             ['/', 'Home'],
             ['/blog', 'Blog'],
-            ['/contact', 'Contact'],
         ]
     }
     return render(request,'about/index.html', context)
