@@ -1,5 +1,20 @@
 {% extends "snippets/base.html"  %}
 
+{% load static %}
+
+{% block app_css %}
+<link rel="stylesheet" type="text/css" href="{% static "about/css/styles.css" %}">
+{% endblock %}
+
+{% block image %}
+<div class="masthead"
+      style="background-image: url('../../static/about/img/banner_about.png');">
+{% comment %}          <div class="color-overlay d-flex flex-column justify-content-center align-items-center">
+              <h1>Learning Django</h1>
+        </div>{% endcomment %}
+</div>
+{% endblock %}
+
 {% block bar %}
 <h2>{{ title_bar}}</h2>
 {% endblock %}
