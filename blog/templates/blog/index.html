@@ -27,5 +27,10 @@
 {% endblock %}
 
 {% block content1 %}
-<p>Content</p>
+    {% for Post in Posts %}
+    <h1>{{ Post.title }}</h1>
+    <h6>{{ Post.body  }}</h6>
+    {% endfor %}
+    
+
 {% endblock %}

@@ -2,12 +2,19 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
+from .models import Post
+
 def index(request):
+    # QUERY SET
+    posts = Post.objects.all()
+    #print(posts)
+
     context = {
         'title_bar': 'Telemor Blog',
         'title_page': 'Telemor nia Blog diaria',
         'kontributor': 'vtl_it_reinaldo',
         'app_css':'blog/css/styles.css',
+        'Posts' : posts,
         'nav': [
             ['/', 'Home'],
             ['/about', 'About'],

@@ -28,5 +28,12 @@
 {% endblock %}
 
 {% block content1 %}
-<p>Content</p>
+  {% for foo in about %}
+  <h1>{{ foo.profile }}</h1>
+    <p>{{ foo.misaun  }}</p>
+      <p>{{ foo.visaun }}</p>
+      <p>{{ foo.service  }}</p>
+  {% endfor %}
+
+    
 {% endblock %}
