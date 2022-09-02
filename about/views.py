@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 from .models import About
@@ -27,18 +29,23 @@ def handle_id(request, id=None):
     #QUERY SET
     abouts = About.objects.all()
     about_obj = None
-    if id is not None:
-        about_obj = About.objects.get(id=id)
-    context = {
-        'title_bar': 'About Telemor',
-        'title_page': ' About Telemor Hetan diak Liu',
-        'kontributor': 'Diego Fernandes',
-        'app_css': 'about/css/styles.css',
-        'about' : abouts,
-        'object' : about_obj,
-        'nav': [
-            ['/', 'Home'],
-            ['/blog', 'Blog'],
-        ]
-    }
-    return render(request,'about/index.html', context)
+    #about_obj = About.objects.get(id=id)
+    about_obj = get_object_or_404(About, id=id)
+
+    if about_obj is not None:
+        context = {
+            'title_bar': 'About Telemor',
+            'title_page': ' About Telemor Hetan diak Liu',
+            'kontributor': 'Diego Fernandes',
+            'app_css': 'about/css/styles.css',
+            'about': abouts,
+            'object': about_obj,
+            'nav': [
+                ['/', 'Home'],
+                ['/blog', 'Blog'],
+            ]
+        }
+        return render(request, 'about/index.html', context)
+
+
+
