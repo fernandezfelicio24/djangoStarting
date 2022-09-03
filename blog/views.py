@@ -102,3 +102,17 @@ def gossip(request):
     return render(request, 'blog/categoryblog.html', context)
     #return HttpResponse('<h1>Ini adalah recent post</h1>')
 
+def categoryPost(request, categoryInput):
+    post = Post.objects.filter(category=categoryInput)
+
+    print(post)
+    return HttpResponse("category post")
+
+
+def singlePost(request, slugInput):
+    post = Post.objects.get(slug=slugInput)
+
+    judul = "<h1>{}</h1>".format(post.title)
+    body = "<p>{}</p>".format(post.body)
+    category = "<p> {} </p>".format(post.category)
+    return HttpResponse(judul + body + category)

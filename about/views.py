@@ -29,7 +29,10 @@ def handle_id(request, id=None):
     #QUERY SET
     abouts = About.objects.all()
     about_obj = None
+    #if we use this the result will be server error
     #about_obj = About.objects.get(id=id)
+
+    #if we use this the result will be not found
     about_obj = get_object_or_404(About, id=id)
 
     if about_obj is not None:

@@ -8,8 +8,10 @@ class Post(models.Model):
     body = models.TextField()
     email = models.EmailField(default='defaultuser@gmail.com')
     adress = models.CharField(max_length=200, blank=True)
+    category = models.CharField(max_length=255, default='Science')
+    slug = models.SlugField(default='football-team')
     time_post = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
-        return "{}".format(self.title)
+        return "{} . {}".format(self.id, self.title)
