@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.index),
     path('<str:categoryInput>/', views.categoryPost),
     path('post/<slug:slugInput>/', views.singlePost),
+    path('detail-post/<slug:slugInput>/', views.detailPost),
     #path('<int:id>/', views.handle_id),
     path('soccer/', views.soccer),
     #path('buisnes/', views.buisnes),

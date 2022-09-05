@@ -116,3 +116,20 @@ def singlePost(request, slugInput):
     body = "<p>{}</p>".format(post.body)
     category = "<p> {} </p>".format(post.category)
     return HttpResponse(judul + body + category)
+
+def detailPost(request, slugInput):
+
+    posts = Post.objects.get(slug=slugInput)
+
+    context = {
+
+        'title_page': 'DETAIL POST',
+        'kontributor': 'el_chino antrax',
+        'Posts': posts,
+        'nav': [
+            ['/', 'Home'],
+            ['/about', 'About'],
+            ['/blog', 'Blog'],
+        ]
+    }
+    return render(request, 'blog/detailBlog.html', context)

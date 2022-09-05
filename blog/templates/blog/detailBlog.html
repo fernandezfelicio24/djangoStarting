@@ -1,0 +1,25 @@
+{% extends "snippets/base.html"  %}
+{% load static %}
+
+{% block app_css %}
+<link rel="stylesheet" type="text/css" href="{% static "blog/css/styles.css" %}">
+{% endblock %}
+
+
+
+{% block header %}
+<h1>{{ title_page}}</h1>
+{% endblock %}
+
+{% block content %}
+<p>Welcome To the Blog Page Brozzz and Sizzz</p>
+{% endblock %}
+
+{% block content1 %}
+
+    <h1>{{ Posts.title }}</h1>
+    <h6>{{ Posts.body  }}</h6>
+        <h6>{{ Posts.time_post }}</h6>
+        <br>
+    
+{% endblock %}
