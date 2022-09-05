@@ -32,6 +32,9 @@
          <h1  style="color:darkslateblue;">{{ Post.title }}</h1>
         </a>
 
+         <a href="/blog/category/{{ Post.category }}" title="">
+         <h5  style="color:darkslateblue;">{{ Post.category }}</h5>
+        </a>
     <h6>{{ Post.body  }}</h6>
     {% endfor %}
     

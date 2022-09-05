@@ -5,19 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{% static "blog/css/styles.css" %}">
 {% endblock %}
 
-{% block image %}
-<div class="masthead"
-      style="background-image: url('../../static/blog/img/banner_blog.png');">
-          {% comment %}<div class="color-overlay d-flex flex-column justify-content-center align-items-center">
-              <h1>Learning Django</h1>
-        </div>{% endcomment %}
-</div>
-{% endblock %}
-
-{% block bar %}
-<h2>{{ title_bar}}</h2>
-{% endblock %}
-
 {% block header %}
 <h1>{{ title_page}}</h1>
 {% endblock %}
@@ -27,9 +14,16 @@
 {% endblock %}
 
 {% block content1 %}
+    <ul class="nav">
+    <li class="nav-item">
+        
+    </li>
+    </ul>
+
     {% for Post in Posts %}
-    <h1>{{ Post.title }}</h1>
-    <h6>{{ Post.body  }}</h6>
+         <a href="/blog/detail-post/{{ Post.slug }}" title="">
+         <h1  style="color:darkslateblue;">{{ Post.title }}</h1>
+        </a>
         <h6>{{ Post.time_post }}</h6>
         <br>
     {% endfor %}

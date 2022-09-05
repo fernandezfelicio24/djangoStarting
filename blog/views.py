@@ -117,6 +117,27 @@ def singlePost(request, slugInput):
     category = "<p> {} </p>".format(post.category)
     return HttpResponse(judul + body + category)
 
+def categoryPostingan(request, categoryInput):
+
+    posts = Post.objects.filter(category=categoryInput)
+
+    categories = Post.objects.values('category').distinct()
+
+    context = {
+
+        'title_page': 'Showing based on Category',
+        'kontributor': 'el_chino antrax',
+        'Categories': categories,
+        'Posts': posts,
+        'nav': [
+            ['/', 'Home'],
+            ['/about', 'About'],
+            ['/blog', 'Blog'],
+        ]
+    }
+    return render(request, 'blog/categoryblog.html', context)
+    #return HttpResponse(posts.category + posts.body  )
+
 def detailPost(request, slugInput):
 
     posts = Post.objects.get(slug=slugInput)
