@@ -8,12 +8,13 @@ def index(request):
     # QUERY SET
     posts = Post.objects.all()
     #print(posts)
-
+    categories = Post.objects.values('category').distinct()
     context = {
         'title_bar': 'Telemor Blog',
         'title_page': 'Telemor nia Blog diaria',
         'kontributor': 'vtl_it_reinaldo',
         'app_css':'blog/css/styles.css',
+        'Kategories': categories,
         'Posts' : posts,
         'nav': [
             ['/', 'Home'],
@@ -122,12 +123,13 @@ def categoryPostingan(request, categoryInput):
     posts = Post.objects.filter(category=categoryInput)
 
     categories = Post.objects.values('category').distinct()
+    print(categories)
 
     context = {
 
         'title_page': 'Showing based on Category',
         'kontributor': 'el_chino antrax',
-        'Categories': categories,
+        'Kategories': categories,
         'Posts': posts,
         'nav': [
             ['/', 'Home'],
