@@ -4,7 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name="blog-index"),
     path('<str:categoryInput>/', views.categoryPost),
     path('post/<slug:slugInput>/', views.singlePost),
     path('detail-post/<slug:slugInput>/', views.detailPost),
@@ -15,5 +15,6 @@ urlpatterns = [
     path('news/', views.news),
     path('jurnal/', views.jurnal),
     path('gossip/', views.gossip),
+
 ]
 

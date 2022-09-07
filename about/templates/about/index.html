@@ -16,7 +16,37 @@
 {% endblock %}
 
 {% block bar %}
-<h2>{{ title_bar}}</h2>
+    <ul>
+    <li>
+        <a href="{% url "blog-index" %}" title="">
+        <h6  style="color:darkslateblue;">Blog</h6>
+        </a>
+    </li>
+    <li>
+        <a href="{% url "about:profile" %}" title="">
+        <h6  style="color:darkslateblue;">Profile</h6>
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url "about:misaun" %}" title="">
+        <h6  style="color:darkslateblue;">Misaun</h6>
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url "about:visaun" %}" title="">
+        <h6  style="color:darkslateblue;">Visaun</h6>
+        </a>
+    </li>
+
+    <li>
+        <a href="{% url "about:special" input="love" %}" title="">
+        <h6  style="color:darkslateblue;">Special Company</h6>
+        </a>
+    </li>
+    </ul>
+
 {% endblock %}
 
 {% block header %}
