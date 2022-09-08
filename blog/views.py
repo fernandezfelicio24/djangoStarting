@@ -121,8 +121,9 @@ def singlePost(request, slugInput):
 def categoryPostingan(request, categoryInput):
 
     posts = Post.objects.filter(category=categoryInput)
-
+    print(categoryInput)
     categories = Post.objects.values('category').distinct()
+
     print(categories)
 
     context = {
