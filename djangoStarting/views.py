@@ -7,10 +7,10 @@ def index(request):
         'title_page' : 'Never Stop Learning',
         'kontributor' : 'Felicio Fernandez',
         'banner' : 'img/banner_home.png',
-        'nav': [
-            ['/blog', 'Blog'],
-            ['/about', 'About'],
-        ]
+        # 'nav': [
+        #     ['/blog', 'Blog'],
+        #     ['/about', 'About'],
+        # ]
     }
     return render(request, 'index.html', context)
 

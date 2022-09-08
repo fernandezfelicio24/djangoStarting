@@ -17,10 +17,10 @@ def index(request):
         'kontributor': 'Diego Fernandes',
         'app_css': 'about/css/styles.css',
         'about' : abouts,
-        'nav': [
-            ['/', 'Home'],
-            ['/blog', 'Blog'],
-        ]
+        # 'nav': [
+        #     ['/', 'Home'],
+        #     ['/blog', 'Blog'],
+        # ]
     }
     return render(request,'about/index.html', context)
 

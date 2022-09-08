@@ -131,11 +131,11 @@ def categoryPostingan(request, categoryInput):
         'kontributor': 'el_chino antrax',
         'Kategories': categories,
         'Posts': posts,
-        'nav': [
-            ['/', 'Home'],
-            ['/about', 'About'],
-            ['/blog', 'Blog'],
-        ]
+        # 'nav': [
+        #     ['/', 'Home'],
+        #     ['/about', 'About'],
+        #     ['/blog', 'Blog'],
+        # ]
     }
     return render(request, 'blog/categoryblog.html', context)
     #return HttpResponse(posts.category + posts.body  )
