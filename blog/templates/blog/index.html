@@ -43,8 +43,7 @@
             </a>
 
         </li>
-
-
+        
      {% endfor %}
     </ul>
     <h6>Test INDEX bLOG </h6>
@@ -52,16 +51,19 @@
 
 {% block content1 %}
     {% for Post in Posts %}
-        <a href="/blog/detail-post/{{ Post.slug }}" title="">
-         <h1  style="color:darkslateblue;">{{ Post.title }}</h1>
-        </a>
 
-         <a href="/blog/category/{{ Post.category }}" title="">
-         <h5  style="color:darkslateblue;">{{ Post.category }}</h5>
-        </a>
+
+        <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:detail-post" slugInput=Post.slug %}">
+              <h1  style="color:darkslateblue;">{{ Post.title }}</h1>
+            </a>
+
+
+         <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=Post.category  %}">
+              {{ Post.category }}
+            </a>
     <h6>{{ Post.body | truncatechars:200 }}</h6>
         <h6>{{ Post.time_post }}</h6>
+
     {% endfor %}
-    
 
 {% endblock %}
