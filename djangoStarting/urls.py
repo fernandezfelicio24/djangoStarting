@@ -11,5 +11,6 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', views.index, name="index"),
+    path('test-form', views.testform, name="tesform"),
 
 ]

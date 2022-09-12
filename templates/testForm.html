@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+{% extends "snippets/base.html"  %}
+{% load static %}
+
+{% block app_css %}
+<link rel="stylesheet" type="text/css" href="{% static "css/styles.css" %}">
+{% endblock %}
+
+{% block image %}
+<div class="masthead"
+      style="background-image: url('../static/img/background-image.jpg');">
+          <div class="color-overlay d-flex flex-column justify-content-center align-items-center">
+              <h1 >Learning Django</h1>
+        </div>
+</div>
+{% endblock %}
+
+{% block bar %}
+<h2>{{ title_bar}}</h2>
+{% endblock %}
+
+{% block header %}
+<h1>{{ title_page}}</h1>
+
+{% endblock %}
+
+{% block content %}
+<h1>INPUT FORM</h1>
+{% endblock %}
+
+{% block content1 %}
+ <form method="post">
+ {% csrf_token %}
+  <div class="form-group">
+    <label for="formGroupExampleInput">Name</label>
+    <input name="name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Input your name">
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Adress</label>
+    <input name="adress" type="text" class="form-control" id="formGroupExampleInput2" placeholder="Input your Adress">
+  </div>
+    <br>
+     <div >
+         <button type="submit" class="btn btn-dark">Submit</button>
+     </div>
+
+</form>
+    <h2>{{ name }}</h2>
+    <h2>{{ adress }}</h2>
+{% endblock %}
