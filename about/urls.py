@@ -8,7 +8,9 @@ urlpatterns = [
     path('profile/', views.companyprf, name="profile"),
     path('misaun/', views.companmsn, name="misaun"),
     path('visaun/', views.companyvsn, name="visaun"),
-    path('special/<str:input>/', views.aboutsps, name="special")
+    path('special/<str:input>/', views.aboutsps, name="special"),
+
+    path('about-form/', views.aboutform, name="aboutform"),
 ]
 
 

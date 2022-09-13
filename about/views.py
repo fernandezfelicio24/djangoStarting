@@ -5,6 +5,9 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import About
 
+# Import form here
+from .forms import ContactForm
+
 def index(request):
 
     #QUERY SET
@@ -130,6 +133,22 @@ def aboutsps(request, input):
         ]
     }
     return HttpResponse('<h1>Welcome ! Testing URL name space,  </h1>'+ input)
+
+def aboutform(request):
+
+    contact_form = ContactForm()
+
+    context = {
+        'contact_form' : contact_form
+    }
+    if request.method == 'POST':
+        context['name'] = request.POST['name']
+        context['adress'] = request.POST['adress']
+    else:
+        print("This is GET Method")
+    #test if get the data or not
+    print(request.POST)
+    return render(request, 'about/aboutForm.html', context)
 
 
 
