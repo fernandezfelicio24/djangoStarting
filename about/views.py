@@ -143,7 +143,12 @@ def aboutform(request):
     }
     if request.method == 'POST':
         context['name'] = request.POST['name']
-        context['adress'] = request.POST['adress']
+        context['gender'] = request.POST['gender']
+        context['address'] = request.POST['address']
+        context['pos_code'] = request.POST['pos_code']
+        context['city'] = request.POST['city']
+        context['province'] = request.POST['province']
+        context['agree'] = request.POST['agree_or_not']
     else:
         print("This is GET Method")
     #test if get the data or not
