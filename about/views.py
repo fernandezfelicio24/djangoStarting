@@ -145,6 +145,7 @@ def aboutform(request):
         context['name'] = request.POST['name']
         context['gender'] = request.POST['gender']
         context['address'] = request.POST['address']
+        context['date_birth'] = request.POST['date_birth']
         context['pos_code'] = request.POST['pos_code']
         context['city'] = request.POST['city']
         context['province'] = request.POST['province']

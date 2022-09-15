@@ -5,13 +5,20 @@ from django import forms
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=12)
     GENDER = {
-        ('P', 'Man'),
+        ('M', 'Man'),
         ('W', 'Woman'),
-        ('-', 'Non Biner'),
+        ('Non-Biner', 'Non Biner'),
     }
-    gender = forms.ChoiceField(choices=GENDER)
+    gender = forms.ChoiceField(choices=GENDER,
+                               widget=forms.CheckboxSelectMultiple,
+                               )
     email  = forms.EmailField(label='Email Address')
-    address = forms.CharField(required=False)
+    address = forms.CharField(required=False,
+                              widget=forms.Textarea,
+                              max_length=100)
+    date_birth = forms.DateField(
+        widget= forms.SelectDateWidget()
+    )
     pos_code = forms.IntegerField(required=False)
     city = forms.CharField(required=True)
     province = forms.CharField(required=False)
