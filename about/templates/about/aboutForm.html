@@ -39,8 +39,51 @@
 <h1>INPUT FORM</h1>
      <form method="post">
     {% csrf_token %}
+         <div class="form-group">
+             {{ contact_form.name.label_tag }}
+             {{ contact_form.name}}
+         </div>
+         <div class="form-group">
+             
+             {{ contact_form.gender.label_tag }}
+             {% for genders in contact_form.gender %}
+                 <div class="form-group-input">
+					{{genders.tag}}
+					<label for="{{genders.id_for_label}}">
+						{{genders.choice_label}}
+					</label>
+				</div>
+
+             {% endfor %}
+         </div>
+
+        <div class="form-group">
+			{{contact_form.date_birth.label_tag}}
+			<div class="form-row">
+				{{contact_form.date_birth}}
+			</div>
+
+		</div>
+
+     <div class="form-group">
+			{{contact_form.email.label_tag}}
+			{{contact_form.email}}
+		</div>
+
+		<div class="form-group">
+			{{contact_form.address.label_tag}}
+			{{contact_form.address}}
+		</div>
+
+
+
+        <div class="form-group">
+			{{contact_form.agree_or_not.label_tag}}
+			{{contact_form.agree_or_not}}
+		</div>
+
      <table>
-            {{ contact_form.as_table  }}
+{#            {{ contact_form.as_table  }}#}
      </table>
 
     <br>
@@ -52,9 +95,10 @@
 <h1>RESULT OF DATA INPUT : </h1>
     <h2>{{ name }}</h2>
     <h2>{{ gender }}</h2>
+    <h2>{{ date_birth }}</h2>
     <h2>{{ address }}</h2>
-    <h2>{{ pos_code }}</h2>
+    {% comment %}<h2>{{ pos_code }}</h2>
     <h2>{{ city }}</h2>
-    <h2>{{ province }}</h2>
+    <h2>{{ province }}</h2>{% endcomment %}
      <h2>{{ agree}}</h2>
 {% endblock %}

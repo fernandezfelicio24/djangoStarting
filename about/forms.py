@@ -3,26 +3,64 @@
 from django import forms
 
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=12)
+
+    name = forms.CharField(
+        label='Full Name',
+        max_length=20,
+        widget= forms.TextInput(
+            attrs={
+                'class':'form-control',
+                'placeholder':'Enter your name'
+            }
+        )
+                )
+
     GENDER = {
         ('M', 'Man'),
         ('W', 'Woman'),
         ('Non-Biner', 'Non Biner'),
     }
-    gender = forms.ChoiceField(choices=GENDER,
-                               widget=forms.CheckboxSelectMultiple,
-                               )
-    email  = forms.EmailField(label='Email Address')
+    gender = forms.ChoiceField(
+        label='Gender',
+
+        widget=forms.RadioSelect(),
+                choices=[
+                    ('M', 'Man'),
+                    ('W', 'Woman')
+                ]
+                )
+
+
+    email  = forms.EmailField(
+        label='Email Address',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter your valid email',
+            }
+        )
+    )
+
     address = forms.CharField(required=False,
-                              widget=forms.Textarea,
-                              max_length=100)
+                              max_length=100,
+                              widget=forms.Textarea(
+                                  attrs={
+                                      'class': 'form-control',
+                                  }
+                              )
+                )
+
     date_birth = forms.DateField(
-        widget= forms.SelectDateWidget()
+        widget=forms.SelectDateWidget(
+            attrs={
+                'class': 'form-control col-sm-2',
+            },
+            )
     )
     pos_code = forms.IntegerField(required=False)
     city = forms.CharField(required=True)
     province = forms.CharField(required=False)
-    agree_or_not = forms.BooleanField()
+    agree_or_not = forms.BooleanField(label="All the Data that you enter is correct")
 
 
 
