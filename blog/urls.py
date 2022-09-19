@@ -11,6 +11,7 @@ urlpatterns = [
     path('category/<str:categoryInput>/', views.categoryPostingan, name="category"),
     #path('<int:id>/', views.handle_id),
     path('soccer/', views.soccer),
+    path('create-blog', views.create, name="create_blog")
     #path('buisnes/', views.buisnes),
     # path('news/', views.news),
     # path('jurnal/', views.jurnal),

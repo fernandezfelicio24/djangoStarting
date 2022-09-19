@@ -20,16 +20,18 @@ class ContactForm(forms.Form):
         ('W', 'Woman'),
         ('Non-Biner', 'Non Biner'),
     }
-    gender = forms.ChoiceField(
-        label='Gender',
+    # this gender don't have in database so I comment it
 
-        widget=forms.RadioSelect(),
-                choices=[
-                    ('M', 'Man'),
-                    ('W', 'Woman')
-                ]
-                )
-
+    # gender = forms.ChoiceField(
+    #     label='Gender',
+    #
+    #     widget=forms.RadioSelect(),
+    #             choices=[
+    #                 ('M', 'Man'),
+    #                 ('W', 'Woman')
+    #             ]
+    #             )
+    #
 
     email  = forms.EmailField(
         label='Email Address',

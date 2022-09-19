@@ -2,7 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
+#import model
 from .models import Post
+
+#Import form here
+from .forms import PostForm
 
 def index(request):
     # QUERY SET
@@ -28,6 +32,32 @@ def index(request):
     }
     #return HttpResponse('<h1>Ini adalah recent post</h1>')
     return render(request, 'blog/index.html', context)
+
+def create(request):
+
+    blog_form = PostForm()
+
+    context = {
+        'blog_form' : blog_form
+    }
+    return render(request, 'blog/createblog.html', context)
+
+def store(request):
+    pass
+
+
+def show(request):
+    pass
+
+def edit(request):
+    pass
+
+def update(request):
+    pass
+
+def destroy(request):
+    pass
+
 
 def soccer(request):
     # QUERY SET
@@ -157,3 +187,4 @@ def detailPost(request, slugInput):
         ]
     }
     return render(request, 'blog/detailBlog.html', context)
+

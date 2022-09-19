@@ -1,0 +1,71 @@
+{% extends "snippets/base.html"  %}
+{% load static %}
+
+{% block app_css %}
+<link rel="stylesheet" type="text/css" href="{% static "blog/css/styles.css" %}">
+{% endblock %}
+
+{% block image %}
+<div class="masthead"
+      style="background-image: url('../../static/blog/img/banner_blog.png');">
+          {% comment %}<div class="color-overlay d-flex flex-column justify-content-center align-items-center">
+              <h1>Learning Django</h1>
+        </div>{% endcomment %}
+</div>
+{% endblock %}
+
+{% block bar %}
+<h2>
+    <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:index" %}">
+               ADD BLOG
+    </a>
+</h2>
+{% endblock %}
+
+{% block header %}
+<h1>CREATE BLOG</h1>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block content1 %}
+   <form method="post">
+    {% csrf_token %}
+         <div class="form-group">
+             {{ blog_form.title.label_tag }}
+             {{ blog_form.title}}
+         </div>
+
+
+     <div class="form-group">
+			{{blog_form.body.label_tag}}
+			{{blog_form.body}}
+		</div>
+
+		<div class="form-group">
+			{{blog_form.email.label_tag}}
+			{{blog_form.email}}
+		</div>
+
+        <div class="form-group">
+			{{blog_form.address.label_tag}}
+			{{blog_form.address}}
+		</div>
+
+
+        <div class="form-group">
+			{{blog_form.category.label_tag}}
+			{{blog_form.category}}
+		</div>
+
+     <table>
+{#            {{ contact_form.as_table  }}#}
+     </table>
+
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

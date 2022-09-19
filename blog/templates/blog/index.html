@@ -15,7 +15,11 @@
 {% endblock %}
 
 {% block bar %}
-<h2>{{ title_bar}}</h2>
+<h2>
+    <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:create_blog" %}">
+               CREATE BLOG
+    </a>
+</h2>
 {% endblock %}
 
 {% block header %}
