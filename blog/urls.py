@@ -5,13 +5,14 @@ from . import views
 app_name = 'blog'
 urlpatterns = [
     path('', views.index, name="index"),
-    path('<str:categoryInput>/', views.categoryPost),
+     path('<str:categoryInput>/', views.categoryPost),
     path('post/<slug:slugInput>/', views.singlePost),
     path('detail-post/<slug:slugInput>/', views.detailPost, name="detail-post"),
     path('category/<str:categoryInput>/', views.categoryPostingan, name="category"),
     #path('<int:id>/', views.handle_id),
     path('soccer/', views.soccer),
-    path('create-blog', views.create, name="create_blog")
+    path('create-blog', views.create, name="create_blog"),
+    path('store-blog', views.store, name="store_blog")
     #path('buisnes/', views.buisnes),
     # path('news/', views.news),
     # path('jurnal/', views.jurnal),

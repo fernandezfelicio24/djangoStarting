@@ -31,7 +31,7 @@
 {% endblock %}
 
 {% block content1 %}
-   <form method="post">
+   <form action="/blog/store-blog" method="post">
     {% csrf_token %}
          <div class="form-group">
              {{ blog_form.title.label_tag }}

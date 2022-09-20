@@ -5,7 +5,7 @@ class PostForm(forms.Form):
 
     title = forms.CharField(
         label='Title',
-        max_length=30,
+        max_length=50,
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 # Create your views here.
 
 #import model
@@ -43,7 +44,19 @@ def create(request):
     return render(request, 'blog/createblog.html', context)
 
 def store(request):
-    pass
+
+    if request.method == 'POST':
+        Post.objects.create(
+            title = request.POST.get('title'),
+            body=request.POST.get('body'),
+            email=request.POST.get('email'),
+            adress=request.POST.get('address'),
+            category=request.POST.get('category'),
+        )
+
+
+    return HttpResponseRedirect("/blog")
+
 
 
 def show(request):

@@ -12,7 +12,7 @@ class Post(models.Model):
     slug = models.SlugField(blank=True, editable=False)
     time_post = models.DateTimeField(auto_now_add=True)
 
-    def save(self):
+    def save(self,  *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save()
 
