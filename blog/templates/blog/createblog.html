@@ -31,6 +31,7 @@
 {% endblock %}
 
 {% block content1 %}
+    {{ error }}
    <form action="/blog/store-blog" method="post">
     {% csrf_token %}
          <div class="form-group">

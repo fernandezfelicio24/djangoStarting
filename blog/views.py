@@ -44,19 +44,28 @@ def create(request):
     return render(request, 'blog/createblog.html', context)
 
 def store(request):
-
+    blog_form = PostForm(request.POST or None)
+    error = None
     if request.method == 'POST':
-        Post.objects.create(
-            title = request.POST.get('title'),
-            body=request.POST.get('body'),
-            email=request.POST.get('email'),
-            adress=request.POST.get('address'),
-            category=request.POST.get('category'),
-        )
 
+        if blog_form.is_valid():
+            Post.objects.create(
+                title = blog_form.cleaned_data.get('title'),
+                body=blog_form.cleaned_data.get('body'),
+                email=blog_form.cleaned_data.get('email'),
+                adress=blog_form.cleaned_data.get('address'),
+                category=blog_form.cleaned_data.get('category'),
+            )
 
-    return HttpResponseRedirect("/blog")
+            return HttpResponseRedirect("/blog")
+        else:
+            error = blog_form.errors
 
+    context = {
+        'blog_form': blog_form,
+        'error': error
+    }
+    return render(request,'blog/createblog.html', context)
 
 
 def show(request):
