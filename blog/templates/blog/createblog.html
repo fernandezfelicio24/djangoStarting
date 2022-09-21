@@ -27,11 +27,24 @@
 {% endblock %}
 
 {% block content %}
+{% if error != None %}
+
+    <div class="alert alert-danger" role="alert">
+        {{ error}}
+
+    </div>
+
+
+
+
+    {% endif %}
 
 {% endblock %}
 
 {% block content1 %}
-    {{ error }}
+
+
+
    <form action="/blog/store-blog" method="post">
     {% csrf_token %}
          <div class="form-group">
