@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 # Create your views here.
@@ -44,20 +44,23 @@ def create(request):
     return render(request, 'blog/createblog.html', context)
 
 def store(request):
+
     blog_form = PostForm(request.POST or None)
     error = None
+
     if request.method == 'POST':
 
         if blog_form.is_valid():
-            Post.objects.create(
-                title = blog_form.cleaned_data.get('title'),
-                body=blog_form.cleaned_data.get('body'),
-                email=blog_form.cleaned_data.get('email'),
-                adress=blog_form.cleaned_data.get('address'),
-                category=blog_form.cleaned_data.get('category'),
-            )
+            # Post.objects.create(
+            #     title = blog_form.cleaned_data.get('title'),
+            #     body=blog_form.cleaned_data.get('body'),
+            #     email=blog_form.cleaned_data.get('email'),
+            #     adress=blog_form.cleaned_data.get('address'),
+            #     category=blog_form.cleaned_data.get('category'),
+            # )
+            blog_form.save()
 
-            return HttpResponseRedirect("/blog")
+            return redirect("/blog")
         else:
             error = blog_form.errors
 
