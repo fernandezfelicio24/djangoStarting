@@ -69,13 +69,26 @@ class PostForm(forms.ModelForm):
             'adress',
             'category'
         ]
-
+        labels = {
+            'title': 'Title',
+            'body': 'Paragraph',
+        }
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Enter the title...', }),
-            'body' : forms.Textarea(attrs={'class': 'form-control', }),
-            'email' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your valid email', }),
-            'adress': forms.Textarea(attrs={'class': 'form-control',}),
-            'category' : forms.TextInput(attrs={'class': 'form-control','placeholder':'Category'}),
+            'title': forms.TextInput(
+                attrs={
+                    'class': 'form-control','placeholder': 'Enter the title...', }
+            ),
+            'body' : forms.Textarea(
+                attrs={'class': 'form-control', }
+            ),
+            'email' : forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'Enter your valid email', }
+            ),
+            'adress': forms.Textarea(
+                attrs={'class': 'form-control',}
+            ),
+            'category' : forms.TextInput(attrs={'class': 'form-control','placeholder':'Category'}
+            ),
 
         }
         # https: // stackoverflow.com / questions / 12097825 / specifying - widget -

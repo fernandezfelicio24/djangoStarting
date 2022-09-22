@@ -80,8 +80,11 @@ def edit(request):
 def update(request):
     pass
 
-def destroy(request):
-    pass
+def destroy(request, delete_id):
+
+    Post.objects.filter(id=delete_id).delete()
+
+    return redirect("/blog")
 
 
 def soccer(request):

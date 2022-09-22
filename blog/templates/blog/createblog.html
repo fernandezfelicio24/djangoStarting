@@ -34,16 +34,11 @@
 
     </div>
 
-
-
-
     {% endif %}
 
 {% endblock %}
 
 {% block content1 %}
-
-
 
    <form action="/blog/store-blog" method="post">
     {% csrf_token %}
@@ -51,7 +46,6 @@
              {{ blog_form.title.label_tag }}
              {{ blog_form.title}}
          </div>
-
 
      <div class="form-group">
 			{{blog_form.body.label_tag}}
@@ -68,7 +62,6 @@
 			{{blog_form.adress}}
 		</div>
 
-
         <div class="form-group">
 			{{blog_form.category.label_tag}}
 			{{blog_form.category}}
@@ -79,7 +72,7 @@
      </table>
 
     <br>
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary" type="Submit">Submit</button>
 </form>
 
 {% endblock %}
