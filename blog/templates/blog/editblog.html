@@ -53,28 +53,9 @@
 
      {% endfor %}
     </ul>
-    <h6>Test INDEX bLOG </h6>
+
 {% endblock %}
 
 {% block content1 %}
-    {% for Post in Posts %}
-        <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:detail-post" slugInput=Post.slug %}">
-              <h1  style="color:darkslateblue;">{{ Post.title }}</h1>
-            </a>
-
-         <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=Post.category  %}">
-              {{ Post.category }}
-            </a>
-        <h6>{{ Post.body | truncatechars:200 }}</h6>
-        <h6>{{ Post.time_post }}</h6>
-
-        <a  class="btn btn-danger" href="{% url "blog:destroy" delete_id=Post.id  %}">
-              DELETE
-        </a>
-         <a  class="btn btn-warning" href="{% url "blog:destroy" delete_id=Post.id  %}">
-              EDIT
-        </a>
-
-    {% endfor %}
-
+   <h6>TEST 1.2.3</h6>
 {% endblock %}
