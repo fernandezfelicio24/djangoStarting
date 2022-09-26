@@ -74,11 +74,57 @@ def store(request):
 def show(request):
     pass
 
-def edit(request):
-    pass
+def edit(request, edit_id):
 
-def update(request):
-    pass
+    edit_obj = Post.objects.get(id=edit_id)
+
+    data = {
+        'id': edit_obj.id,
+        'title': edit_obj.title,
+        'body': edit_obj.body,
+        'email': edit_obj.email,
+        'adress': edit_obj.adress,
+        'category': edit_obj.category,
+    }
+    print(data)
+    blog_form = PostForm(request.POST or None, initial=data, instance=edit_obj)
+
+    context = {
+        'blog_form': blog_form,
+        'id_blog' : edit_id,
+    }
+
+    return render(request,'blog/editblog.html', context)
+
+def update(request, update_id):
+    #return HttpResponse('<h1>Coba UPDATE</h1>')
+    edit_obj = Post.objects.get(id=update_id)
+    error = None
+    print(edit_obj)
+    data = {
+        'title': edit_obj.title,
+        'body': edit_obj.body,
+        'email': edit_obj.email,
+        'adress': edit_obj.adress,
+        'category': edit_obj.category,
+    }
+    blog_form = PostForm(request.POST or None, initial=data, instance=edit_obj)
+
+    if request.method == 'POST':
+
+        if blog_form.is_valid():
+
+            blog_form.save()
+
+            return redirect("/blog")
+        else:
+            error = blog_form.errors
+
+    context = {
+        'blog_form': blog_form,
+        'error': error
+    }
+    return render(request, 'blog/editblog.html', context)
 
 def destroy(request, delete_id):
 

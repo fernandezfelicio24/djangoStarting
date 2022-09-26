@@ -46,14 +46,11 @@
                {{ dataCategory.category }}
             </a>
 
-            <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=dataCategory.category %}">
-               {{ dataCategory.category }}
-            </a>
         </li>
 
      {% endfor %}
     </ul>
-    <h6>Test INDEX bLOG </h6>
+
 {% endblock %}
 
 {% block content1 %}
@@ -71,7 +68,7 @@
         <a  class="btn btn-danger" href="{% url "blog:destroy" delete_id=Post.id  %}">
               DELETE
         </a>
-         <a  class="btn btn-warning" href="{% url "blog:destroy" delete_id=Post.id  %}">
+         <a  class="btn btn-warning" href="{% url "blog:edit" edit_id=Post.id  %}">
               EDIT
         </a>
 

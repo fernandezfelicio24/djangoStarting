@@ -16,46 +16,64 @@
 
 {% block bar %}
 <h2>
-    <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:create_blog" %}">
-               CREATE BLOG
+    <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:index" %}">
+               ADD BLOG
     </a>
 </h2>
 {% endblock %}
 
 {% block header %}
-<h1>{{ title_page}}</h1>
+<h1>EDIT BLOG</h1>
+    <h1>{{ id_blog }}</h1>
 {% endblock %}
 
 {% block content %}
- <ul class="nav">
-      <li class="nav-item" style="color:darkslateblue;">
+{% if error != None %}
 
-            <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:index" %}">
-               ALL POST
-            </a>
-        </li>
-    {% for dataCategory in Kategories %}
+    <div class="alert alert-danger" role="alert">
+        {{ error}}
 
-        <li class="nav-item" style="color:darkslateblue;">
+    </div>
 
-{#            <a style="color:darkslateblue;" class="nav-link" href="/blog/category/{{ dataCategory.category }}">#}
-{#               {{ dataCategory.category }}#}
-{#            </a>#}
-
-            <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=dataCategory.category %}">
-               {{ dataCategory.category }}
-            </a>
-
-            <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=dataCategory.category %}">
-               {{ dataCategory.category }}
-            </a>
-        </li>
-
-     {% endfor %}
-    </ul>
+    {% endif %}
 
 {% endblock %}
 
 {% block content1 %}
-   <h6>TEST 1.2.3</h6>
+
+   <form action="/blog/update-form/{{ id_blog }}" method="post">
+    {% csrf_token %}
+         <div class="form-group">
+             {{ blog_form.title.label_tag }}
+             {{ blog_form.title}}
+         </div>
+
+     <div class="form-group">
+			{{blog_form.body.label_tag}}
+			{{blog_form.body}}
+		</div>
+
+		<div class="form-group">
+			{{blog_form.email.label_tag}}
+			{{blog_form.email}}
+		</div>
+
+        <div class="form-group">
+			{{blog_form.adress.label_tag}}
+			{{blog_form.adress}}
+		</div>
+
+        <div class="form-group">
+			{{blog_form.category.label_tag}}
+			{{blog_form.category}}
+		</div>
+
+     <table>
+{#            {{ contact_form.as_table  }}#}
+     </table>
+
+    <br>
+    <button class="btn btn-info" type="Submit">UPDATE</button>
+</form>
+
 {% endblock %}
