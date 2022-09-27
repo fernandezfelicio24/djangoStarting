@@ -86,7 +86,7 @@ def edit(request, edit_id):
         'adress': edit_obj.adress,
         'category': edit_obj.category,
     }
-    print(data)
+    #print(data)
     blog_form = PostForm(request.POST or None, initial=data, instance=edit_obj)
 
     context = {

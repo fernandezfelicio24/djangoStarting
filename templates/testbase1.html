@@ -24,18 +24,16 @@
 {% endblock %}
 
 {% block content %}
-<p>Welcome To the Index Page Brozzz and Sizzz</p>
+<p>{{ info1 }}</p>
 {% endblock %}
 
 {% block content1 %}
 <h2>
-    <a style="color:darkslateblue;" class="nav-link" href="{% url "testbase" %}">
-               Normal View
-    </a>
+    WELCOME CLASS BASED VIEW SECTION
 </h2>
-    <h2>
-    <a style="color:darkslateblue;" class="nav-link" href="{% url "classbasedview" %}">
-               Test Class Based View
-    </a>
-</h2>
+
+    <form method="post">
+    {% csrf_token %}
+     <button type="submit">POST</button>
+    </form>
 {% endblock %}
