@@ -4,6 +4,8 @@ from django.shortcuts import render
 #import class based view
 from django.views import View
 
+#import Template View
+from django.views.generic.base import TemplateView
 
 def index(request):
     context = {
@@ -60,3 +62,26 @@ class IndexClassView(View):
     def post(self, request):
         self.context['info1'] = 'POST FUNCTION based'
         return render(request, self.template_name, self.context)
+
+# make class for parameter view
+class ParameterView(TemplateView):
+    template_name = 'parameterview.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = kwargs
+        context['judul'] = "Home Parameter"
+        context['writer'] = "Adasi Mau Rahun"
+        return context
+
+# make class for context view
+class ContextView(TemplateView):
+
+    template_name = 'context.html'
+
+    def get_context_data(self):
+        context = {
+            'title' : 'Home Context',
+            'writer' : 'Diego Gomes Fernandes'
+        }
+
+        return context
