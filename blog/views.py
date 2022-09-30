@@ -262,3 +262,53 @@ def detailPost(request, slugInput):
     }
     return render(request, 'blog/detailBlog.html', context)
 
+# bellow is the function of CRUD of blog but with new way
+
+from django.views.generic.base import TemplateView, RedirectView, View
+
+
+class BlogListView(TemplateView):
+    template_name = 'blog/index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        posts = Post.objects.all()
+
+        context = {
+            'Posts': posts,
+            'page_title' : 'This is the list of Blog using Class-based view '
+        }
+
+        return context
+
+class BlogDeleteView(RedirectView):
+    pattern_name = 'blog:index'
+    #permanent = False
+    #query_string = False
+
+    def get_redirect_url(self, *args, **kwargs):
+        delete_id = kwargs['delete_id']
+        Post.objects.filter(id=delete_id).delete()
+
+        return super().get_redirect_url()
+
+
+class BlogFormView(View):
+
+    template_name = 'blog/createblog.html'
+    form = PostForm()
+    mode = None
+    context = {}
+
+    def get(self, *args, **kwargs):
+
+        if self.mode == 'update':
+            edit_obj = Post.objects.get(id=kwargs['update_id'])
+            data = edit_obj.__dict__
+            print(data)
+            self.form = PostForm(initial=data, instance=edit_obj)
+        
+        self.context = {
+            'blog_form': self.form
+        }
+
+        return render(self.request, self.template_name, self.context)
