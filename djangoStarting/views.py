@@ -85,3 +85,15 @@ class ContextView(TemplateView):
         }
 
         return context
+
+from django.views.generic.base import RedirectView
+# view for redirect
+
+class HomeView(RedirectView):
+    #url = '/'
+    pattern_name = 'index'
+
+
+class HomeRedirectView(RedirectView):
+    print("Hello THis is HomeRedirectViewtttttttt")
+    pattern_name = 'index'
