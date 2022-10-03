@@ -262,19 +262,36 @@ def detailPost(request, slugInput):
     }
     return render(request, 'blog/detailBlog.html', context)
 
-# bellow is the function of CRUD of blog but with new way
+# bellow is the function of CRUD of blog but with new way call Clas Based View
 
 from django.views.generic.base import TemplateView, RedirectView, View
 
 
-class BlogListView(TemplateView):
+class BlogSubList:
+
+    def get_list_data(self, get_request):
+        if len(get_request) == 0:
+            sublist = Post.objects.all()
+        elif get_request.__contains__('content_filter'):
+            sublist = Post.objects.filter(category = get_request['content_filter'])
+        else:
+            sublist = Post.objects.none()
+        return sublist
+
+class BlogListView(BlogSubList, TemplateView):
     template_name = 'blog/index.html'
 
     def get_context_data(self, *args, **kwargs):
-        posts = Post.objects.all()
+        #posts = Post.objects.all()
+        posts = self.get_list_data(self.request.GET)
+
+        list_categories  = Post.objects.values_list('category', flat=True).distinct()
+        print(list_categories)
+        #list_categories = Post.objects.values('category').distinct()
 
         context = {
             'Posts': posts,
+            'data_category' : list_categories,
             'page_title' : 'This is the list of Blog using Class-based view '
         }
 
@@ -306,9 +323,22 @@ class BlogFormView(View):
             data = edit_obj.__dict__
             print(data)
             self.form = PostForm(initial=data, instance=edit_obj)
-        
+
         self.context = {
             'blog_form': self.form
         }
 
         return render(self.request, self.template_name, self.context)
+
+    def post(self, *args, **kwargs):
+
+        if kwargs.__contains__('update_id'):
+            edit_obj = Post.objects.get(id=kwargs['update_id'])
+            self.form = PostForm(self.request.POST, instance=edit_obj)
+        else:
+            self.form = PostForm(self.request.POST)
+
+        if self.form.is_valid():
+            self.form.save()
+
+        return redirect('blog:index')

@@ -15,6 +15,19 @@
 {% endblock %}
 
 {% block bar %}
+    <div class="dropdown">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Blog Content
+          </a>
+
+          <ul class="dropdown-menu">
+               {% for dataCategory in data_category %}
+            <li><a class="dropdown-item"  href="{% url 'blog:index' %}?content_filter={{dataCategory}}"> {{ dataCategory }}</a></li>
+
+{#            <li><a class="dropdown-item" href="#">Something else here</a></li>#}
+                {% endfor %}
+          </ul>
+    </div>
 <h2>
     <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:create_blog" %}">
                CREATE BLOG
@@ -36,21 +49,21 @@
                ALL POST
             </a>
         </li>
-    {% for dataCategory in Kategories %}
+            {% for dataCategory in Kategories %}
 
-        <li class="nav-item" style="color:darkslateblue;">
+                        <li class="nav-item" style="color:darkslateblue;">
 
-{#            <a style="color:darkslateblue;" class="nav-link" href="/blog/category/{{ dataCategory.category }}">#}
-{#               {{ dataCategory.category }}#}
-{#            </a>#}
+                {#            <a style="color:darkslateblue;" class="nav-link" href="/blog/category/{{ dataCategory.category }}">#}
+                {#               {{ dataCategory.category }}#}
+                {#            </a>#}
 
-            <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=dataCategory.category %}">
-               {{ dataCategory.category }}
-            </a>
+                {#            <a style="color:darkslateblue;" class="nav-link" href="{% url "blog:category" categoryInput=dataCategory.category %}">#}
+                {#               {{ dataCategory.category }}#}
+                {#            </a>#}
 
-        </li>
+                        </li>
 
-     {% endfor %}
+            {% endfor %}
     </ul>
 
 {% endblock %}
